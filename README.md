@@ -1,11 +1,11 @@
 # webpack2-react-antd
 1. 安装指定版本的 webpack `npm install webpack@2.6.1 --save-dev`
 2. 安装 react 相关内容 `npm install react react-dom redux redux-logger redux-thunk --save`
-> * react react-dom 之间的区别 [参考链接](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) <br>
-    1. react 已经和浏览器或者 DOM 没有关系了，为了构建体积更小，适应更多的环境，拆分了 react react-dom。使得在编写 web 和 react-native 之间铺平了道路，可以跨平台共享组件。 <br>
-    2. react 包括 **React.createElement**、**.createClass**、**.Component**、**.PropTypes、.Children** <br>
-    3. react-dom 包括 **ReactDOM.render**、**.unmountComponentAtNode**、**.findDOMNode** <br>
-    4. react-dom/server 中有服务端的一些渲染接口 **ReactDOMServer.renderToString**、**.renderToStaticMarkup** <br>
+## react react-dom 之间的区别 [参考链接](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) <br>
+    1). react 已经和浏览器或者 DOM 没有关系了，为了构建体积更小，适应更多的环境，拆分了 react react-dom。使得在编写 web 和 react-native 之间铺平了道路，可以跨平台共享组件。 <br>
+    2). react 包括 **React.createElement**、**.createClass**、**.Component**、**.PropTypes、.Children** <br>
+    3). react-dom 包括 **ReactDOM.render**、**.unmountComponentAtNode**、**.findDOMNode** <br>
+    4). react-dom/server 中有服务端的一些渲染接口 **ReactDOMServer.renderToString**、**.renderToStaticMarkup** <br>
     以下这种旧的写法可以支持到 0.15 release 版本 <br>
 ```javascript
     var React = require('react');
@@ -19,10 +19,9 @@
 
     ReactDOM.render(<MyComponent />, node);
 ```
-
-    5. 只有引用 react-dom 以后才能调用 this.refs.giraffe.getDOMNode() 获取底层的 DOM 节点。注意，自定义（用户定义）组件的参考与以前完全一致;只有内置的DOM组件受此更改的影响。 <br>
-    6. 此更改也适用于将 DOM 节点作为顶层组件传递时，ReactDOM.render 的返回结果。 <br>
-    7. 有了这个变化，将弃用 .getDOMNode() 并将其替换为 ReactDOM.findDOMNode()。如果您的组件正在使用 .getDOMNode()，它们将继续使用警告，直到 0.15。 <br>
+    5). 只有引用 react-dom 以后才能调用 this.refs.giraffe.getDOMNode() 获取底层的 DOM 节点。注意，自定义（用户定义）组件的参考与以前完全一致;只有内置的DOM组件受此更改的影响。 <br>
+    6). 此更改也适用于将 DOM 节点作为顶层组件传递时，ReactDOM.render 的返回结果。 <br>
+    7). 有了这个变化，将弃用 .getDOMNode() 并将其替换为 ReactDOM.findDOMNode()。如果您的组件正在使用 .getDOMNode()，它们将继续使用警告，直到 0.15。 <br>
 ```javascript
     var Zoo = React.createClass({
     render: function() {
