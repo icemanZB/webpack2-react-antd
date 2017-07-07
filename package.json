@@ -1,0 +1,24 @@
+{
+  "name": "webpack2-react-antd",
+  "version": "1.0.0",
+  "description": "webpack2 for react and antd",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icemanZB/webpack2-react-antd.git"
+  },
+  "keywords": [
+    "webpack2",
+    "react",
+    "antd"
+  ],
+  "author": "IcemanZB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icemanZB/webpack2-react-antd/issues"
+  },
+  "homepage": "https://github.com/icemanZB/webpack2-react-antd#readme"
+}
