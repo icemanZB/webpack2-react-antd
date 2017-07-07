@@ -18,7 +18,7 @@
     });
 
     ReactDOM.render(<MyComponent />, node);
-``` <br>
+```
     5. 只有引用 react-dom 以后才能调用 this.refs.giraffe.getDOMNode() 获取底层的 DOM 节点。注意，自定义（用户定义）组件的参考与以前完全一致;只有内置的DOM组件受此更改的影响。 <br>
     6. 此更改也适用于将 DOM 节点作为顶层组件传递时，ReactDOM.render 的返回结果。 <br>
     7. 有了这个变化，将弃用 .getDOMNode() 并将其替换为 ReactDOM.findDOMNode()。如果您的组件正在使用 .getDOMNode()，它们将继续使用警告，直到 0.15。 <br>
