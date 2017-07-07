@@ -1,12 +1,12 @@
 # webpack2-react-antd
 1. 安装指定版本的 webpack `npm install webpack@2.6.1 --save-dev`
 2. 安装 react 相关内容 `npm install react react-dom redux redux-logger redux-thunk --save`
-## react react-dom 之间的区别 [参考链接](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) <br>
-    1). react 已经和浏览器或者 DOM 没有关系了，为了构建体积更小，适应更多的环境，拆分了 react react-dom。使得在编写 web 和 react-native 之间铺平了道路，可以跨平台共享组件。 <br>
-    2). react 包括 **React.createElement**、**.createClass**、**.Component**、**.PropTypes、.Children** <br>
-    3). react-dom 包括 **ReactDOM.render**、**.unmountComponentAtNode**、**.findDOMNode** <br>
-    4). react-dom/server 中有服务端的一些渲染接口 **ReactDOMServer.renderToString**、**.renderToStaticMarkup** <br>
-    以下这种旧的写法可以支持到 0.15 release 版本 <br>
+&emsp;&emsp;**react react-dom** 之间的区别 [参考链接](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) <br>
+&emsp;&emsp;1). react 已经和浏览器或者 DOM 没有关系了，为了构建体积更小，适应更多的环境，拆分了 react react-dom。使得在编写 web 和 react-native 之间铺平了道路，可以跨平台共享组件。 <br>
+&emsp;&emsp;2). react 包括 **React.createElement**、**.createClass**、**.Component**、**.PropTypes、.Children** <br>
+&emsp;&emsp;3). react-dom 包括 **ReactDOM.render**、**.unmountComponentAtNode**、**.findDOMNode** <br>
+&emsp;&emsp;4). react-dom/server 中有服务端的一些渲染接口 **ReactDOMServer.renderToString**、**.renderToStaticMarkup** <br>
+&emsp;&emsp;以下这种旧的写法可以支持到 0.15 release 版本 <br>
 ```javascript
     var React = require('react');
     var ReactDOM = require('react-dom');
