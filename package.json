@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "webpack2 for react and antd",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/icemanZB/webpack2-react-antd.git"
@@ -20,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/icemanZB/webpack2-react-antd/issues"
   },
-  "homepage": "https://github.com/icemanZB/webpack2-react-antd#readme"
+  "homepage": "https://github.com/icemanZB/webpack2-react-antd#readme",
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "redux": "^3.7.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  }
 }
