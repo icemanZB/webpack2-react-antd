@@ -37,4 +37,17 @@
 &emsp;&emsp;总结：两者的区别就是 **react-dom** 是 **react** 的一部分。**react-dom** 是 **react** 和 DOM 之间的粘合剂，一般用来定义单一的组件，或者结合 **ReactDOM.findDOMNode()** 来使用。更重要的是 **react-dom** 包已经允许开发者删除 **react** 包添加的非必要的代码，并将其移动到一个更合适的存储库。从 **0.14** 版本开始，**react** 库被拆成了两个，**react.render** 在 **0.14** 版本已经不建议使用，如果你使用的话，在 **console** 里会有一个警告。并且在 **0.15** 版本中可能不再被支持。 <br>
 &emsp;&emsp;* **redux-logger** 使用 **redux-logger** 中间件实现前端 log 日志打印 action 功能 <br>
 &emsp;&emsp;* **redux-thunk** **redux-thunk** 中间件允许用于延迟动作的发送，或者只有在满足某个条件时才能发送（异步），内部函数接收 **store** 方法 **dispatch** 和 **getState** 作为参数。 <br>
-3. 安装 react-router3 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save`
+3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save`
+4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
+> * 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 [参考网址](http://expressjs.com/zh-cn/) <br>
+> * **webpack-merge** 提供了一个合并函数 [参考网址](https://www.npmjs.com/package/webpack-merge) <br>
+> * **webpack-dev-middleware** 就是一个运行于内存中的文件系统，也是 express 的中间件。[参考网址](https://github.com/webpack/webpack-dev-middleware/) <br>
+> * **webpack-hot-middleware** 热替换，配合 webpack-dev-middleware 使用 [参考网址](https://www.npmjs.com/package/webpack-hot-middleware) <br>
+> * **http-proxy-middleware** nodejs 代理，转发所有请求代理到真实的后端真实 API 地址，可避免跨域。[参考网址] (https://www.npmjs.com/package/http-proxy-middleware) <br>
+5. 安装 **opn** `npm install opn --save-dev` 打开默认浏览器 [参考网址](https://www.npmjs.com/package/opn)<br>
+6. 安装 **html-webpack-plugin** `npm install html-webpack-plugin --save-dev` 自动创建 html 文件。[参考网址](https://github.com/ampedandwired/html-webpack-plugin) <br>
+7. 安装 **friendly-errors-webpack-plugin** `npm install friendly-errors-webpack-plugin --save-dev` 友好的错误提示 [参考网址](https://www.npmjs.com/package/friendly-errors-webpack-plugin)<br>
+
+
+
+全局安装 npm install -g eslint

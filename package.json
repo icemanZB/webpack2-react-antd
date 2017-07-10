@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "webpack2 for react and antd",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "node build/dev-server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/icemanZB/webpack2-react-antd.git"
@@ -20,7 +22,15 @@
   },
   "homepage": "https://github.com/icemanZB/webpack2-react-antd#readme",
   "devDependencies": {
-    "webpack": "^2.6.1"
+    "express": "^4.15.3",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.29.0",
+    "http-proxy-middleware": "^0.17.4",
+    "opn": "^5.1.0",
+    "webpack": "^2.6.1",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "react": "^15.6.1",
