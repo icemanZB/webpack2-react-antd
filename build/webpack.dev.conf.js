@@ -2,14 +2,17 @@ let merge = require('webpack-merge'),
     htmlWebpackPlugin = require('html-webpack-plugin'),
     friendlyErrors = require('friendly-errors-webpack-plugin'),
     webpack = require('webpack'),
-
+    
     baseWebpackConfig = require('./webpack.base.conf'),
     config = require('./config');
 
 Object.keys(baseWebpackConfig.entry).forEach((name) => {
-    // ./dev-client.js 提示路径找不到 
-    baseWebpackConfig.entry[name] = ['./build/dev-client.js'].concat(baseWebpackConfig.entry[name]);
+    // 一定是要这样的路径 ./build/dev-client，不解
+    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
 });
+
+// { index: [ './build/dev-client.js', './src/index.js' ] }
+console.log(baseWebpackConfig.entry);
 
 module.exports = merge(baseWebpackConfig, {
 

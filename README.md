@@ -40,10 +40,24 @@
 3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save`
 4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
 > * 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 [参考网址](http://expressjs.com/zh-cn/) <br>
+> > Express　本质是一系列　middleware　的集合，middleware 的用途，就是在輸入到輸出的過程中加工的一種手段。因此，适合　Express　的　webpack　开发工具是 webpack-dev-middleware　和　webpack-hot-middleware <br>
+
 > * **webpack-merge** 提供了一个合并函数 [参考网址](https://www.npmjs.com/package/webpack-merge) <br>
 > * **webpack-dev-middleware** 就是一个运行于内存中的文件系统，也是 express 的中间件。[参考网址](https://github.com/webpack/webpack-dev-middleware/) <br>
+> > webpack-dev-middleware 是 webpack 的一个中间件。它用于在 Express 中分发需要通过 webpack 编译的文件。 <br>
+> > 特性：1) 不会在硬盘中写入文件，完全基于内存实现。2) 如果在请求某个静态资源的时候，webpack编译还没有运行完毕，webpack-dev-server不会让这个请求失败，而是会一直阻塞它，直到webpack编译完毕。这个对应的效果是，如果你在不恰当的时候刷新了页面，不会看到错误，而是会在等待一段时间后重新看到正常的页面，就好像“网速很慢”。 <br>
+
+
 > * **webpack-hot-middleware** 热替换，配合 webpack-dev-middleware 使用 [参考网址](https://www.npmjs.com/package/webpack-hot-middleware) <br>
+> > webpack-hot-middleware是一个结合 webpack-dev-middleware 使用的 middleware ，它可以实现浏览器的无刷新更新(hot reload)。<br>
+> > webpack-hot-middleware 它通过订阅 webpack 的编译更新，之后通过执行 webpack 的 HMR api 将这些代码模块的更新推送给浏览器端。 <br>
+> > **HMR** ( Hot Module Replacement ) 的实现原理是在我们的开发中的应用代码中加入了 HMR Runtime，它是 HMR 的客户端 ( 浏览器端 client ) 用于和开发服务器通信，接收更新的模块。服务端工作就是 webpack-hot-middleware 的，它会在代码更新编译完成之后通过以 json 格式输出给 HMR Runtime，然后根据 json 中描述来动态更新相应的代码。( f12 XHR 中可以看到 `_webpack_hmr` 的一个文件，查看 EventStream 中的 json) 
+
+
 > * **http-proxy-middleware** nodejs 代理，转发所有请求代理到真实的后端真实 API 地址，可避免跨域。[参考网址] (https://www.npmjs.com/package/http-proxy-middleware) <br>
+
+
+
 5. 安装 **opn** `npm install opn --save-dev` 打开默认浏览器 [参考网址](https://www.npmjs.com/package/opn)<br>
 6. 安装 **html-webpack-plugin** `npm install html-webpack-plugin --save-dev` 自动创建 html 文件。[参考网址](https://github.com/ampedandwired/html-webpack-plugin) <br>
 7. 安装 **friendly-errors-webpack-plugin** `npm install friendly-errors-webpack-plugin --save-dev` 友好的错误提示 [参考网址](https://www.npmjs.com/package/friendly-errors-webpack-plugin)<br>
@@ -51,3 +65,8 @@
 
 
 全局安装 npm install -g eslint
+
+
+
+
+

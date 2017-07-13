@@ -12,20 +12,29 @@ let path = require('path'),
     webpack = require('webpack'),
     webpackConfig = require('./webpack.dev.conf');
 
-let compiler = webpack(webpackConfig);
+let compiler = webpack(webpackConfig); // 让 webpack 先进行编译
 
 let devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    quiet: true
+    // 最好配置 http://localhost:8088/ 这样的绝对地址，这是因为在使用 ?sourceMap 的时候，style-loader 会把 css 的引入做成这样 { test: /\.scss$/,loader: 'style!css?sourceMap') }
+    // <link rel="stylesheet" href="blob:http://localhost:8088/"> 这种 blob 的形式可能会使得 css 里的 url() 引用的图片失效，因此建议用带 http 的绝对地址（这也只有开发环境会用到）。
+    // 有关这个问题的详情，你可以查看 https://github.com/webpack-contrib/style-loader/issues/55
+    publicPath: webpackConfig.output.publicPath, // 大部分情况下和 output.publicPath 相同
+    noInfo: true, // 显示任何信息到控制台
+    quiet: true, // 什么都不显示控制台
+    stats: {
+        colors: true
+    }
 });
 
 let hotMiddleware = require('webpack-hot-middleware')(compiler, {
     log: () => {}
 });
 
-// 使用了 html-webpack-plugin 插件，强制刷新页面
+// 使用了 html-webpack-plugin 插件，强制刷新页面 (非同步)
+// Make(任务开始) => compilation(编译任务) => after-compilation(编译完成) => emit(即将准备生成文件) => after-emit(生成文件后)
 compiler.plugin('compilation', (compilation) => {
     compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+        // 发布一个事件，在 dev-client.js 订阅
         hotMiddleware.publish({
             action: 'reload'
         });
