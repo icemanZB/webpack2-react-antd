@@ -1,0 +1,5 @@
+.box {
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/pic_load@2x.png');
+}

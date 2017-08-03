@@ -60,8 +60,6 @@ Object.keys(proxyTable).forEach((context) => {
         };
     }
 
-    // app.use(proxyMiddleware(options.filter || context, options))
-
     app.use(proxyMiddleware(context, options));
 
 });

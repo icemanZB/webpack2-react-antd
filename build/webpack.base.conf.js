@@ -16,5 +16,11 @@ module.exports = {
         alias: {
             'src': config.commonPath.src
         }
+    },
+    module: {
+        rules: [{
+            test: /\.(png|svg|jpg|gif)$/,
+            use: ['file-loader']
+        }]
     }
 };
