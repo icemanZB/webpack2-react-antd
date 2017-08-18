@@ -72,7 +72,7 @@ package.json >>
 > > webpack-hot-middleware 它通过订阅 webpack 的编译更新，之后通过执行 webpack 的 HMR api 将这些代码模块的更新推送给浏览器端。 <br>
 > > **HMR** ( Hot Module Replacement ) 的实现原理是在我们的开发中的应用代码中加入了 HMR Runtime，它是 HMR 的客户端 ( 浏览器端 client ) 用于和开发服务器通信，接收更新的模块。服务端工作就是 webpack-hot-middleware 的，它会在代码更新编译完成之后通过以 json 格式输出给 HMR Runtime，然后根据 json 中描述来动态更新相应的代码。( f12 XHR 中可以看到 `_webpack_hmr` 的一个文件，查看 EventStream 中的 json) 
 
-> * **http-proxy-middleware** nodejs 代理，转发所有请求代理到真实的后端真实 API 地址，可避免跨域。[参考网址] (https://www.npmjs.com/package/http-proxy-middleware) <br>
+> * **http-proxy-middleware** nodejs 代理，转发所有请求代理到真实的后端真实 API 地址，可避免跨域。[参考网址](https://www.npmjs.com/package/http-proxy-middleware) <br>
 
 5. 安装 **opn** `npm install opn --save-dev` 打开默认浏览器 [参考网址](https://www.npmjs.com/package/opn)<br>
 
@@ -152,10 +152,26 @@ module: {
 
 19. 安装 **ora** `npm install ora --save-dev` 终端 loading [参考地址](https://www.npmjs.com/package/ora) <br>
 
+20. 安装 **babel-preset-env** `npm install babel-preset-env --save-dev` **babel-preset-env** 可以根据配置的目标运行环境自动启用需要的 babel 插件。[参考网址](https://www.npmjs.com/package/babel-preset-env) <br>
+
+21. 安装 **babel-plugin-transform-runtime** `npm install babel-plugin-transform-runtime --save-dev` 解决编译后的代码函数 _defineProperty 可能会重复出现在一些模块里。[参考网址](https://www.npmjs.com/package/babel-plugin-transform-runtime) <br>
+
+22. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则（共有4个阶段） [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
+
+23. 安装 **babel-loader** `npm install babel-loader --save-dev` Babel 和 Webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
+
 全局安装 npm install -g eslint
 
 
+使用babel6的一些简单分享 https://cnodejs.org/topic/56460e0d89b4b49902e7fbd3
 
+babel-preset-env  https://segmentfault.com/p/1210000008466178 
+
+babel-plugin-transform-runtime   https://segmentfault.com/q/1010000005596587?from=singlemessage&isappinstalled=1
+
+babel-core 应该要安装? https://segmentfault.com/a/1190000008159877
+
+export default 和 export?  http://www.jianshu.com/p/edaf43e9384f
 
 exports 和 export
 

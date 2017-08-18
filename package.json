@@ -22,8 +22,20 @@
     "url": "https://github.com/icemanZB/webpack2-react-antd/issues"
   },
   "homepage": "https://github.com/icemanZB/webpack2-react-antd#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router": "^3.0.2",
+    "redux": "^3.7.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-2": "^6.24.1",
     "chalk": "^2.0.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
@@ -46,13 +58,5 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-merge": "^4.1.0"
-  },
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router": "^3.0.2",
-    "redux": "^3.7.1",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
   }
 }
