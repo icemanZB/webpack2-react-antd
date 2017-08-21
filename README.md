@@ -152,13 +152,15 @@ module: {
 
 19. 安装 **ora** `npm install ora --save-dev` 终端 loading [参考地址](https://www.npmjs.com/package/ora) <br>
 
-20. 安装 **babel-preset-env** `npm install babel-preset-env --save-dev` **babel-preset-env** 可以根据配置的目标运行环境自动启用需要的 babel 插件。[参考网址](https://www.npmjs.com/package/babel-preset-env) <br>
+20. 安装 **babel-core** `npm install babel-core --save-dev` 当你想在代码中运行es6代码的话，需要安装babel-core [参考地址](https://www.npmjs.com/package/babel-core) <br>
 
-21. 安装 **babel-plugin-transform-runtime** `npm install babel-plugin-transform-runtime --save-dev` 解决编译后的代码函数 _defineProperty 可能会重复出现在一些模块里。[参考网址](https://www.npmjs.com/package/babel-plugin-transform-runtime) <br>
+21. 安装 **babel-preset-env** `npm install babel-preset-env --save-dev` **babel-preset-env** 可以根据配置的目标运行环境自动启用需要的 babel 插件。[参考网址](https://www.npmjs.com/package/babel-preset-env) <br>
 
-22. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则（共有4个阶段） [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
+22. 安装 **babel-plugin-transform-runtime** `npm install babel-plugin-transform-runtime --save-dev` 解决编译后的代码函数 _defineProperty 可能会重复出现在一些模块里。[参考网址](https://www.npmjs.com/package/babel-plugin-transform-runtime) <br>
 
-23. 安装 **babel-loader** `npm install babel-loader --save-dev` Babel 和 Webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
+23. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则（共有4个阶段） [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
+
+24. 安装 **babel-loader** `npm install babel-loader --save-dev` Babel 和 Webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
 
 全局安装 npm install -g eslint
 
@@ -174,6 +176,125 @@ babel-core 应该要安装? https://segmentfault.com/a/1190000008159877
 export default 和 export?  http://www.jianshu.com/p/edaf43e9384f
 
 exports 和 export
+
+
+
+webstorm 配置
+1、拼音检查 Editor -> Inspections -> Profile(选择 Default) -> typo(输入) -> 勾去掉
+
+2、静态方法 Editor -> Inspections -> Profile(选择 Default) -> Method can be static(输入) -> 勾去掉
+
+3、Editor -> Inspections -> XML -> Unbound XML namespace prefix
+
+4、去掉自动保存 File -> Settings -> Appearance & Behavior -> System Settings 中的只留第一个勾
+   在 File -> Settings -> Editor -> General -> Editor Tabs 中把 Mark modified tabs width asterisk 打上勾
+   Synchronize files on frame or editor tab activation ( 激活当前窗口时保存 )
+   Save files on frame deactivation 切换到其他窗口的时候( 当前窗口没有被激活 ) 保存
+   Use safe write ( save changes to a temporary file first ) 安全写入，只要能重命名成功就会覆盖掉源文件来达到安全自动保存的目的
+   所以这个安全会不停的保存源文件。关掉这个选项就只会在很少的情况下自动保存。
+
+5、配置 git
+   git config --global user.name "zhoubing"、git config --global user.email "254784109@qq.com"
+   查看全局的邮箱或名字：git config --global user.email
+   webstorm 中 Version Control -> GitHub -> Auth Type(选择 Password) -> 输入账号密码
+
+6、CSS颜色显示在代码上面
+   Editor -> General -> Appearance -> Show CSS color preview as background(打勾)，去掉 Show CSS color preview icon in gutter
+
+7、Code Style 把用到的语言统一设置 -> Tabs and Indents -> Use tab character(打勾) -> Smart tabs(打勾) -> 设置 Indent 为 4
+
+8、设置js对齐方式
+   Code Style -> JavaScript -> other -> Align object properties(选择 On colon) -> Align ‘var’ statements and assignments(选择 Align multiline ‘var’ statements)
+
+9、设置一些其他的 Code Style
+  JavaScript -> Wrapping and Braces -> Simple methods in one line(打勾)、Comment at first column(去掉打勾)、ES6 import/export(Do not wrap)
+  HTML -> Wrap text(去掉打勾)、Wrap attributes ( Do not wrap )
+  JSON -> Wrapping and Braces -> Arrays(Do not wrap)
+
+10、添加 vue 模板
+    Editor -> File and Code Templates 添加 Vue Component
+    代码片段：
+    <template>
+        <div></div>
+    </template>
+
+    <script type="text/ecmascript-6">
+        export default{
+            data(){
+                return {
+                }
+            },
+            components:{
+            },
+            mounted(){
+            }
+        }
+    </script>
+    <!--
+        这里很重要
+        type="text/scss" 兼容 2017 版本
+        rel="stylesheet/scss"  兼容 2016版本
+        lang="scss" 兼容 vscode
+        在打包编译的时候需要注意
+        vue: {
+            loaders: {
+                scss: ExtractTextPlugin.extract('vue-style-loader', 'css-loader!sass-loader!postcss-loader'),
+                sass: ExtractTextPlugin.extract('vue-style-loader', 'css-loader!sass-loader!postcss-loader'),
+                css: ExtractTextPlugin.extract('vue-style-loader', 'css-loader!sass-loader!postcss-loader')
+            }
+        }
+     -->
+    <style scoped type="text/scss" lang="scss" rel="stylesheet/scss"></style>
+
+11、项目编码设置：Editor -> File Encodings -> 全部设置为 UTF-8
+12、设置 Live Templates
+    Editor -> Live Templates -> JavaScript 添加一个 Live Template
+    Abbreviation:rcc、Description: create react class component
+    Template text 是：
+    import React,{ Component } from 'react';
+
+    class $VAR$ extends Component{
+
+        render(){
+
+            return (
+
+                <div>
+
+                    $VAR$
+
+                </div>
+
+            )
+
+        }
+
+    }
+
+    export default $VAR$
+
+    点击 No applicable contexts yet. Define. 选择 JavaScript
+13. nginx 配置
+    Mac brew search nginx、brew install nginx
+    安装完以后，可以在终端输出的信息里看到一些配置路径：
+    /usr/local/etc/nginx/nginx.conf （配置文件路径），注意 windows 拷贝过来的空格和linux中的空格不同
+    在 conf 中第一行写入 user root owner;
+    listen       8091;
+    location / {
+        #root html;
+        root    /users/zhjb/Desktop/code/h5-cmb/dist;
+        index  index.html index.htm;
+        autoindex   on;
+    }
+
+    location /api {
+        rewrite ^/api/(.*) / break;
+        proxy_pass  http://172.30.11.10;
+    }
+
+    配置好后，启动相关服务 sudo nginx
+    重载配置文件：sudo nginx -s reload
+    停止 nginx 服务器：sudo nginx -s stop
 
 
 

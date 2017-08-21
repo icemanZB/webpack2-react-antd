@@ -7,7 +7,7 @@ import Img from '../static/img/pic_load@2x.png';
 
 function component() {
 
-	var element = document.createElement('div');
+	let element = document.createElement('div');
 
 	element.innerHTML = 'hello webpack';
 
@@ -23,7 +23,7 @@ function component() {
 
 	element.classList.add(StyleLess.border);
 
-	var myImg = new Image();
+	let myImg = new Image();
 
 	myImg.src = Img;
 

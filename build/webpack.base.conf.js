@@ -1,5 +1,6 @@
 let config = require('./config'),
-    fs     = require('fs');
+    fs     = require('fs'),
+    path   = require('path');
 
 module.exports = {
 	entry  : {
@@ -18,9 +19,16 @@ module.exports = {
 		}
 	},
 	module : {
-		rules: [{
-			test: /\.(png|svg|jpg|gif)$/,
-			use : ['file-loader']
-		}]
+		rules: [
+			{
+				test   : /\.jsx?$/,
+				loader : 'babel-loader',
+				include: path.join(__dirname, '..', 'src')
+			},
+			{
+				test: /\.(png|svg|jpg|gif)$/,
+				use : ['file-loader']
+			}
+		]
 	}
 };
