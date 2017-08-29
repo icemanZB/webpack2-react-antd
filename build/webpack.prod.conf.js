@@ -12,28 +12,30 @@ let path                  = require('path'),
 
 module.exports = merge(baseWebpackConfig, {
 	module : {
-		rules: [{
-			test: /\.css$/,
-			use : ExtractTextPlugin.extract({
-				fallback: "style-loader",
-				use     : [{
-					loader : 'css-loader',
-					options: {
-						modules      : true,
-						importLoaders: 1
-					}
-				},
-					{
-						loader : 'postcss-loader',
-						options: {
-							plugins: function () {
-								return [require('autoprefixer')()];
+		rules: [
+			{
+				test: /\.css$/,
+				use : ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use     : [
+						{
+							loader : 'css-loader',
+							options: {
+								modules      : true,
+								importLoaders: 1
+							}
+						},
+						{
+							loader : 'postcss-loader',
+							options: {
+								plugins: function () {
+									return [require('autoprefixer')()];
+								}
 							}
 						}
-					}
-				]
-			})
-		},
+					]
+				})
+			},
 			{
 				test: /\.less$/,
 				use : ExtractTextPlugin.extract({
@@ -72,36 +74,37 @@ module.exports = merge(baseWebpackConfig, {
 			verbose: true
 		}),
 
-		new webpack.optimize.UglifyJsPlugin({
+		/*new webpack.optimize.UglifyJsPlugin({
 			output  : {
 				comments: false
 			},
 			compress: {
 				warnings: false
 			}
-		}),
+		}),*/
 
 		new ExtractTextPlugin(`css/[name].css?v=${utils.getVersion()}`),
 
 		// OptimizeCSSPlugin
 		// Compress extracted CSS. We are using this plugin so that possible
 		// duplicated CSS from different components can be deduped.
-		new OptimizeCSSPlugin({
+		//压缩css代码的，还能去掉extract-text-webpack-plugin插件抽离文件产生的重复代码，因为同一个css可能在多个模块中出现所以会导致重复代码，一般都是配合使用
+		/*new OptimizeCSSPlugin({
 			cssProcessorOptions: {
 				safe: true
 			}
-		}),
+		}),*/
 
 		new HtmlWebpackPlugin({
 			filename      : path.resolve(__dirname, '../dist/index.html'),
 			template      : path.resolve(__dirname, '../src/index_build.html'),
 			title         : 'react',
 			inject        : true,
-			minify        : {
+			/*minify        : {
 				removeComments       : true,
 				collapseWhitespace   : true,
 				removeAttributeQuotes: true
-			},
+			},*/
 			chunksSortMode: 'dependency'
 		}),
 

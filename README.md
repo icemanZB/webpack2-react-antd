@@ -152,30 +152,37 @@ module: {
 
 19. 安装 **ora** `npm install ora --save-dev` 终端 loading [参考地址](https://www.npmjs.com/package/ora) <br>
 
-20. 安装 **babel-core** `npm install babel-core --save-dev` 当你想在代码中运行es6代码的话，需要安装babel-core [参考地址](https://www.npmjs.com/package/babel-core) <br>
+20. 安装 **babel-core** `npm install babel-core --save-dev` 当你想在代码中运行es6代码的话，需要安装 babel-core [参考地址](https://www.npmjs.com/package/babel-core) <br>
+> * babel-core 的作用是把 js 代码分析成 ast，方便各个插件分析语法进行相应的处理。有些新语法在低版本 js 中是不存在的，如箭头函数、rest 参数、函数默认值等，这种语言层面的不兼容只能通过将代码转为 ast，分析其语法后再转为低版本 js。 <br>
 
 21. 安装 **babel-preset-env** `npm install babel-preset-env --save-dev` **babel-preset-env** 可以根据配置的目标运行环境自动启用需要的 babel 插件。[参考网址](https://www.npmjs.com/package/babel-preset-env) <br>
+> * [配置的目标运行环境](https://segmentfault.com/p/1210000008466178)
+> * stage-0 它包含 stage-1, stage-2 以 及stage-3 的所有功能，同时还包括两个插件：transform-do-expressions(编译do表达式)、transform-function-bind(编译bind运算符，也就是::) <br>
+> * stage-1 除了包含 stage-2 和 stage-3，还包括两个插件，transform-class-constructor-call(编译 class 中的 constructor，在 Babel7 中会被移除)、transform-export-extensions(编译额外的exprt语法，如export * as ns from "mod") <br>
+> * stage-2 除了包含 stage-3 的内容，还包括个插件 transform-class-properties( 编译静态属性(es2015)和属性初始化语法声明的属性(es2016) ) <br>
+> * stage-3 除了包含 stage-4 的内容，还包括两个插件 transform-object-rest-spread(编译对象的解构赋值和不定参数)、transform-async-generator-functions(将 async generator function 和 for await 编译为 es2015 的 generator ) <br>
+> * [stage-x](http://babeljs.io/docs/plugins/)
 
 22. 安装 **babel-plugin-transform-runtime** `npm install babel-plugin-transform-runtime --save-dev` 解决编译后的代码函数 _defineProperty 可能会重复出现在一些模块里。[参考网址](https://www.npmjs.com/package/babel-plugin-transform-runtime) <br>
+> * [babel的polyfill和runtime的区别](https://segmentfault.com/q/1010000005596587?from=singlemessage&isappinstalled=1)
 
-23. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则（共有4个阶段） [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
+23. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则 [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
 
-24. 安装 **babel-loader** `npm install babel-loader --save-dev` Babel 和 Webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
+24. 安装 **babel-loader** `npm install babel-loader --save-dev` babel 和 webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
+
+
+
+异步加载 webpack2
 
 全局安装 npm install -g eslint
 
-
 使用babel6的一些简单分享 https://cnodejs.org/topic/56460e0d89b4b49902e7fbd3
-
-babel-preset-env  https://segmentfault.com/p/1210000008466178 
-
-babel-plugin-transform-runtime   https://segmentfault.com/q/1010000005596587?from=singlemessage&isappinstalled=1
-
-babel-core 应该要安装? https://segmentfault.com/a/1190000008159877
 
 export default 和 export?  http://www.jianshu.com/p/edaf43e9384f
 
 exports 和 export
+
+Happypack
 
 
 
