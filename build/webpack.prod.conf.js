@@ -5,7 +5,6 @@ let path                  = require('path'),
     HtmlWebpackPlugin     = require('html-webpack-plugin'),
     ExtractTextPlugin     = require('extract-text-webpack-plugin'),
     OptimizeCSSPlugin     = require('optimize-css-assets-webpack-plugin'),
-    CleanWebpackPlugin    = require('clean-webpack-plugin'),
     TransferWebpackPlugin = require('transfer-webpack-plugin'),
     config                = require('./config'),
     utils                 = require('./utils');
@@ -66,12 +65,6 @@ module.exports = merge(baseWebpackConfig, {
 			'process.env': {
 				'NODE_ENV': JSON.stringify('production')
 			}
-		}),
-
-		// clean-webpack-plugin ^0.1.16 版本接口改了
-		new CleanWebpackPlugin('dist', {
-			root   : path.resolve(__dirname, '..'),
-			verbose: true
 		}),
 
 		/*new webpack.optimize.UglifyJsPlugin({

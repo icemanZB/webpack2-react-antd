@@ -1,7 +1,6 @@
 import StyleLess from './assets/css/main.less';
-import './assets/css/test.css';
-import Style from './assets/css/test.css';
-
+import Style from './assets/css/test1.css';
+import  './assets/css/test.less';
 
 import Img from '../static/img/pic_load@2x.png';
 
@@ -22,6 +21,8 @@ function component() {
 	console.log(StyleLess);  // undefined 这里是无法获取到 css 对象
 
 	element.classList.add(StyleLess.border);
+
+	element.classList.add('less');
 
 	let myImg = new Image();
 
