@@ -306,6 +306,13 @@ webstorm 配置
     重载配置文件：sudo nginx -s reload
     停止 nginx 服务器：sudo nginx -s stop
 
+2340  0.5
+
+93600
+
+46800*0.3
+
+46800*0.2
 
 
 
