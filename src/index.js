@@ -1,38 +1,17 @@
-import StyleLess from './assets/css/main.less';
-import Style from './assets/css/test1.css';
-import  './assets/css/test.less';
+import configureStore from './store/configureStore';
+import { counter } from './actions/counterActions';
 
-import Img from '../static/img/pic_load@2x.png';
+let store = configureStore();
 
-function component() {
+document.onclick = function () {
+	store.dispatch(counter());
+};
 
-	let element = document.createElement('div');
+let curt = store.getState();
 
-	element.innerHTML = 'hello webpack';
+store.subscribe(() => {
 
-	// const css = require('./assets/css/test.css').toString();
-
-	// console.log(css); // {String}
-
-	// element.classList.add('box'); 不使用 CSS Modules
-
-	element.classList.add(Style.box); // 使用 CSS Modules
-
-	console.log(StyleLess);  // undefined 这里是无法获取到 css 对象
-
-	element.classList.add(StyleLess.border);
-
-	element.classList.add('less');
-
-	let myImg = new Image();
-
-	myImg.src = Img;
-
-	document.body.appendChild(myImg);
-
-	return element;
-
-
-}
-
-document.body.appendChild(component());
+	let pre = curt;
+	curt = store.getState();
+	console.log(pre, curt, pre === curt);
+});
