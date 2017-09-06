@@ -184,7 +184,7 @@ optimize-css-assets-webpack-plugin 测试次插件，多个文件引入同一个
 
 异步加载 webpack2
 
-webpack dll http://www.jianshu.com/p/a5b3c2284bb6
+提取第三方库 webpack dll http://www.jianshu.com/p/a5b3c2284bb6
 webpack 编译css 样式去重 https://www.zhihu.com/question/54418211
 
 全局安装 npm install -g eslint
@@ -196,7 +196,6 @@ export default 和 export?  http://www.jianshu.com/p/edaf43e9384f
 exports 和 export
 
 Happypack
-
 
 
 webstorm 配置
