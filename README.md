@@ -66,7 +66,7 @@ package.json >>
 &emsp;&emsp;* **redux-logger** 使用 **redux-logger** 中间件实现前端 log 日志打印 action 功能 <br>
 &emsp;&emsp;* **redux-thunk** **redux-thunk** 中间件允许用于延迟动作的发送，或者只有在满足某个条件时才能发送（异步），内部函数接收 **store** 方法 **dispatch** 和 **getState** 作为参数。 <br>
 
-3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save` <br>
+3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
 
 4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
 > * 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 [参考网址](http://expressjs.com/zh-cn/) <br>
@@ -177,7 +177,9 @@ module: {
 
 22. 安装 **babel-preset-stage-2** `npm install babel-preset-stage-2 --save-dev` ES7不同阶段语法提案的转码规则 [参考网址](https://www.npmjs.com/package/babel-preset-stage-2) <br>
 
-23. 安装 **babel-loader** `npm install babel-loader --save-dev` babel 和 webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
+23. 安装 **babel-preset-react** `npm install --save-dev babel-preset-react` 使用 babel 编译 react [参考网址](https://www.npmjs.com/package/babel-preset-react) <br>
+
+24. 安装 **babel-loader** `npm install babel-loader --save-dev` babel 和 webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
 
 
 optimize-css-assets-webpack-plugin 测试次插件，多个文件引入同一个css
@@ -196,6 +198,34 @@ export default 和 export?  http://www.jianshu.com/p/edaf43e9384f
 exports 和 export
 
 Happypack
+
+//Enhance.js
+import { Component } from "React";
+
+export var Enhance = ComposedComponent => class extends Component {
+    constructor() {
+        this.state = { data: null };
+    }
+    componentDidMount() {
+        this.setState({ data: 'Hello' });
+    }
+    render() {
+        return <ComposedComponent {...this.props} data={this.state.data} />;
+    }
+};
+//HigherOrderComponent.js
+import { Enhance } from "./Enhance";
+
+class MyComponent {
+    render() {
+        if (!this.data) return <div>Waiting...</div>;
+        return <div>{this.data}</div>;
+    }
+}
+
+export default Enhance(MyComponent); // Enhanced component
+
+用一个“增强函数”，来为某个类增加一些方法，并且返回一个新类，这无疑能实现mixin所实现的大部分需求。
 
 
 webstorm 配置
@@ -576,3 +606,4 @@ git config --global user.email "254784109@qq.com"
  "wrap-regex": 0,//正则表达式字面量用小括号包起来
  "yoda": [2, "never"]//禁止尤达条件
 ```
+
