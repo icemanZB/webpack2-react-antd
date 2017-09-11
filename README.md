@@ -15,6 +15,7 @@
 > * 当在本地安装 webpack 后，能够从 **node_modules/.bin/webpack** 访问它的 bin 版本。 <br>
 > * 查看 webpack 版本信息 `npm info webpack` <br>
 > * `npm uninstall 模块名` 删除某个模块 <br>
+> * 在 package.json 文件中指定版本号，重新进行 `npm install` 会安装现在版本而不是 package.json 中指定的版本 <br>
 > * 执行 webpack，会将我们的脚本作为入口起点，然后输出为 bundle.js `./node_modules/.bin/webpack src/index.js dist/bundle.js` <br>
 > * 大多数项目会需要很复杂的设置，可以使用 webpack 的配置文件  **webpack.config.js**，如果 **webpack.config.js** 存在，则 webpack 命令将默认选择使用它。 <br>
 > * `./node_modules/.bin/webpack --config webpack.config.js` --config 选项表明，可以传递任何名称的配置文件。这对于需要拆分成多个文件的复杂配置非常有用。 <br>
@@ -66,7 +67,10 @@ package.json >>
 &emsp;&emsp;* **redux-logger** 使用 **redux-logger** 中间件实现前端 log 日志打印 action 功能 <br>
 &emsp;&emsp;* **redux-thunk** **redux-thunk** 中间件允许用于延迟动作的发送，或者只有在满足某个条件时才能发送（异步），内部函数接收 **store** 方法 **dispatch** 和 **getState** 作为参数。 <br>
 
-3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.2 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
+3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.0 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
+> * react-router3 在使用 **hashHistory** 的时候会重复渲染2次组件的 bug，只能使用 **shouldComponentUpdate** 方式避免 <br>
+> * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题 `npm install react-router@2.8.1 --save` <br>
+> * 安装 **connect-history-api-fallback** `npm install connect-history-api-fallback --save-dev` 处理刷新页面后 router 404 的问题 [参考网址](https://www.npmjs.com/package/connect-history-api-fallback) <br>
 
 4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
 > * 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 [参考网址](http://expressjs.com/zh-cn/) <br>

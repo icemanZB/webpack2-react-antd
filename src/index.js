@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { hashHistory, Router, Route, IndexRoute, Link } from 'react-router';
+import { hashHistory, Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 
 class App extends Component {
-	shouldComponentUpdate(nextProps, nextState) {
-		return this.props.router.location.action === 'PUSH';
-	}
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	return this.props.router.location.action === 'PUSH';
+	// }
 
 	render() {
 		const { children, location } = this.props;
@@ -73,9 +74,10 @@ const Page2 = () => {
 	);
 };
 
-
+// 使用 browserHistory 就没有这个问题，用 hashHistory 就会有 Warning: You cannot PUSH the same path using hash history
+// browserHistory 刷新页面就会 Cannot GET /page1，需要在 dev-server 进行配置，服务器需要做好处理 URL 的准备。
 render((
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Index}/>
 			<Route path="page1" component={Page1}/>
