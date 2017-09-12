@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { hashHistory, Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
+import { Button } from 'antd';
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
 				<ul>
 					<li>
 						<Link to="/page1">Page 1</Link>
+						<Button type="primary">测试</Button>
 					</li>
 					<li>
 						<Link to="/page2">Page 2</Link>

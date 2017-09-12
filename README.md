@@ -69,7 +69,7 @@ package.json >>
 
 3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.0 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
 > * react-router3 在使用 **hashHistory** 的时候会重复渲染2次组件的 bug，只能使用 **shouldComponentUpdate** 方式避免 <br>
-> * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题 `npm install react-router@2.8.1 --save` <br>
+> * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题，但只能安装react版本在v15.5.0一下的，避免**prop-types**报错，一般安装react@15.4.2、react-dom@15.4.2 `npm install react-router@2.8.1 --save` <br>
 > * 安装 **connect-history-api-fallback** `npm install connect-history-api-fallback --save-dev` 处理刷新页面后 router 404 的问题 [参考网址](https://www.npmjs.com/package/connect-history-api-fallback) <br>
 
 4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
@@ -185,6 +185,12 @@ module: {
 
 24. 安装 **babel-loader** `npm install babel-loader --save-dev` babel 和 webpack 进行 js 文件的转换 [参考网址](https://www.npmjs.com/package/babel-loader) <br>
 
+25. 安装 **babel-plugin-import** `npm install babel-plugin-import --save-dev` 支持 antd 按需加载 js 和 css。 [参考网址](https://github.com/ant-design/babel-plugin-import) <br>
+
+26. 安装 **antd** `npm install antd --save` UI组件库，如果要使用新版的，必须安装**prop-types**  [参考地址](https://ant.design/docs/react/introduce-cn) <br>
+
+
+"prop-types"？？，安装react15.4.2的版本适配路由 https://www.npmjs.com/package/prop-types、https://github.com/facebook/prop-types/blob/master/README.md#difference-from-reactproptypes-dont-call-validator-functions
 
 optimize-css-assets-webpack-plugin 测试次插件，多个文件引入同一个css
 

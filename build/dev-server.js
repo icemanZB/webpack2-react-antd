@@ -77,19 +77,6 @@ app.use(hotMiddleware);
 // 服务端的静态资源
 app.use(config.commonPath.staticPath, express.static('./static'));
 
-// 刷新浏览的时候处理 router
-// app.get('*', (request, response, next) => {
-//
-// 	// 请求静态资源的时候按照原有的方式进行下去
-// 	if (request.url.indexOf('.json') !== -1) {
-// 		next();
-// 	} else {
-// 		// 这里指向的是自己创建的静态文件
-// 		response.sendFile(path.resolve(__dirname, '../src', 'index_dev.html'));
-// 	}
-//
-// });
-
 let uri = 'http://localhost:' + port;
 
 let _resolve;
