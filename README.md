@@ -35,6 +35,7 @@ package.json >>
 &emsp;&emsp;2). react 包括 **React.createElement**、**.createClass**、**.Component**、**.PropTypes、.Children** <br>
 &emsp;&emsp;3). react-dom 包括 **ReactDOM.render**、**.unmountComponentAtNode**、**.findDOMNode** <br>
 &emsp;&emsp;4). react-dom/server 中有服务端的一些渲染接口 **ReactDOMServer.renderToString**、**.renderToStaticMarkup** <br>
+&emsp;&emsp;安装 **react@15.6.1 react-dom@15.6.1** 是不用安装 prop-types 也能跑起 antd 和 react-router，react@15.4.2 没有吧 prop-types 提出去，需要安装对应版本的 react-router 和 antd<br>
 &emsp;&emsp;以下这种旧的写法可以支持到 **0.15** 版本 <br>
 ```javascript
     var React = require('react');
@@ -68,7 +69,7 @@ package.json >>
 &emsp;&emsp;* **redux-thunk** **redux-thunk** 中间件允许用于延迟动作的发送，或者只有在满足某个条件时才能发送（异步），内部函数接收 **store** 方法 **dispatch** 和 **getState** 作为参数。 <br>
 
 3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.0 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
-> * react-router3 在使用 **hashHistory** 的时候会重复渲染2次组件的 bug，只能使用 **shouldComponentUpdate** 方式避免 <br>
+> * react-router3 在使用 **hashHistory** 的时候会重复渲染2次组件的 bug，只能使用 **shouldComponentUpdate** 方式避免，不过react-router@3.0.5 修复了 react@15.5.x 的 waring <br>
 > * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题，但只能安装react版本在v15.5.0一下的，避免**prop-types**报错，一般安装react@15.4.2、react-dom@15.4.2 `npm install react-router@2.8.1 --save` <br>
 > * 安装 **connect-history-api-fallback** `npm install connect-history-api-fallback --save-dev` 处理刷新页面后 router 404 的问题 [参考网址](https://www.npmjs.com/package/connect-history-api-fallback) <br>
 
@@ -187,10 +188,10 @@ module: {
 
 25. 安装 **babel-plugin-import** `npm install babel-plugin-import --save-dev` 支持 antd 按需加载 js 和 css。 [参考网址](https://github.com/ant-design/babel-plugin-import) <br>
 
-26. 安装 **antd** `npm install antd --save` UI组件库，如果要使用新版的，必须安装**prop-types**  [参考地址](https://ant.design/docs/react/introduce-cn) <br>
+26. 安装 **antd** `npm install antd --save` UI组件库，如果项目中使用的是react@15.4.2 ，必须安装**prop-types**  [参考地址](https://ant.design/docs/react/introduce-cn) <br>
 
 
-"prop-types"？？，安装react15.4.2的版本适配路由 https://www.npmjs.com/package/prop-types、https://github.com/facebook/prop-types/blob/master/README.md#difference-from-reactproptypes-dont-call-validator-functions
+https://www.npmjs.com/package/prop-types
 
 optimize-css-assets-webpack-plugin 测试次插件，多个文件引入同一个css
 

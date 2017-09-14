@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { hashHistory, Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
-import { Button } from 'antd';
+
+import {  Button } from 'antd';
+
+import  './assets/css/test.less';
 
 class App extends Component {
 
@@ -45,6 +48,7 @@ class App extends Component {
 const Index = () => (
 	<h1>Index</h1>
 );
+
 
 class Page1 extends Component {
 	render() {

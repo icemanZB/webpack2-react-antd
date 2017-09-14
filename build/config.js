@@ -15,13 +15,13 @@ module.exports = {
         productionSourceMap: false
     },
     dev: {
-        port: 8088,
+        port: 8089,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         // 通过 node 服务进行转发
         proxyTable: {
             '/api': {
-                target: ['http://localhost:8088/', 'http://172.30.11.10'][1],
+	            target: 'http://172.30.11.10',
                 // pathRewrite: {
                 // 	'^/api': '/'
                 // }
