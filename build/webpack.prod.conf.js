@@ -56,6 +56,7 @@ module.exports = merge(baseWebpackConfig, {
 	devtool: config.build.productionSourceMap ? '#source-map' : false,
 	output : {
 		path         : config.build.assetsRoot,
+		// 给 filename 增加相对路径
 		filename     : `js/[name].js?v=${utils.getVersion()}`,
 		chunkFilename: `js/[name].js?v=${utils.getVersion()}`
 	},
@@ -88,14 +89,18 @@ module.exports = merge(baseWebpackConfig, {
 			}
 		}),*/
 
+		
 		new HtmlWebpackPlugin({
-			filename      : path.resolve(__dirname, '../dist/index.html'),
+			// 这里也指定了一个相对路径，可以直接写文件名
+			// filename      : path.resolve(__dirname, '../dist/index.html'),
+			// // 当 output : { path : config.build.assetsRoot }指向的这个目录时，插件的输出目录页会指向 output 中的 path
+			filename	  :'index.html',
 			template      : path.resolve(__dirname, '../src/index_build.html'),
 			title         : 'react',
 			inject        : true,
 			/*minify        : {
-				removeComments       : true,
-				collapseWhitespace   : true,
+				removeComments       : true,  // 删除注释
+				collapseWhitespace   : true,  // 删除空格
 				removeAttributeQuotes: true
 			},*/
 			chunksSortMode: 'dependency'

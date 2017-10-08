@@ -28,6 +28,8 @@ module.exports = merge(baseWebpackConfig, {
 						// 使用 CSS Modules
 						options: {
 							modules      : true,
+							// 当某个css文件使用 @import 'test.less' 的时候，也需要对 test.less 进行 postcss
+							// 1 指定几个数量的loader来处理import的资源
 							importLoaders: 1 // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
 						}
 					},

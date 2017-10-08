@@ -72,3 +72,6 @@ process is running and remove the file manually to continue.
 切换分支 git checkout master
 git revert 版本号 在 git push 推送上去
 删除远程分支 git push -d origin slim
+
+快捷键
+ctrl+shift+t 自定义切换小地图

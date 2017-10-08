@@ -68,9 +68,9 @@ package.json >>
 &emsp;&emsp;* **redux-logger** 使用 **redux-logger** 中间件实现前端 log 日志打印 action 功能 <br>
 &emsp;&emsp;* **redux-thunk** **redux-thunk** 中间件允许用于延迟动作的发送，或者只有在满足某个条件时才能发送（异步），内部函数接收 **store** 方法 **dispatch** 和 **getState** 作为参数。 <br>
 
-3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.0 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
+3. 安装 **react-router3** 的版本，由于 4 版本 bug 有点多，暂时不使用 `npm install react-router@3.0.5 --save` [参考网址](https://github.com/ReactTraining/react-router) api 文档 [参考网址](https://github.com/ReactTraining/react-router/blob/v3/docs/API.md)<br>
 > * react-router3 在使用 **hashHistory** 的时候会重复渲染2次组件的 bug，只能使用 **shouldComponentUpdate** 方式避免，不过react-router@3.0.5 修复了 react@15.5.x 的 waring <br>
-> * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题，但只能安装react版本在v15.5.0一下的，避免**prop-types**报错，一般安装react@15.4.2、react-dom@15.4.2 `npm install react-router@2.8.1 --save` <br>
+> * 考虑使用 react-router2.8.1 的稳定版本，没有什么问题，但只能安装react版本在v15.5.0以下的，避免**prop-types**报错，一般安装react@15.4.2、react-dom@15.4.2 `npm install react-router@2.8.1 --save` <br>
 > * 安装 **connect-history-api-fallback** `npm install connect-history-api-fallback --save-dev` 处理刷新页面后 router 404 的问题 [参考网址](https://www.npmjs.com/package/connect-history-api-fallback) <br>
 
 4. 安装 webpack 相关的一些辅助插件 `npm install express webpack-merge webpack-dev-middleware webpack-hot-middleware http-proxy-middleware --save-dev` <br>
@@ -92,11 +92,11 @@ package.json >>
 
 5. 安装 **opn** `npm install opn --save-dev` 打开默认浏览器 [参考网址](https://www.npmjs.com/package/opn)<br>
 
-6. 安装 **html-webpack-plugin** `npm install html-webpack-plugin --save-dev` 自动创建 html 文件。[参考网址](https://github.com/ampedandwired/html-webpack-plugin) <br>
+6. 安装 **html-webpack-plugin** `npm install html-webpack-plugin --save-dev` 自动创建 html 文件。又可以自定义参数进行配置，在 html 中可以直接使用<%= htmlWebpackPlugin.options.date%>。还可以遍历htmlWebpackPlugin，<% for(var key in htmlWebpackPlugin){ %> <%= key %> <% } %> [参考网址](https://github.com/ampedandwired/html-webpack-plugin) <br>
 
 7. 安装 **friendly-errors-webpack-plugin** `npm install friendly-errors-webpack-plugin --save-dev` 友好的错误提示 [参考网址](https://www.npmjs.com/package/friendly-errors-webpack-plugin)<br>
 
-8. 安装 **css-loader** `npm install css-loader --save-dev` **css-loader** 使你能够使用类似 `@import` 和 `url(...)` 的方法实现 `import/require()` 的功能。 [参考网址](https://www.npmjs.com/package/css-loader)<br>
+8. 安装 **css-loader** `npm install css-loader --save-dev` **css-loader** 使你能够使用类似 `@import` 和 `url(...)` 的方法实现 `import/require()` 的功能，处理 css 文件。 [参考网址](https://www.npmjs.com/package/css-loader)<br>
 
 9. 安装 **style-loader** `npm install style-loader --save-dev` **style-loader** 将所有的计算后的样式加入页面中，与 **css-loader** 组合在一起使你能够把样式表嵌入 webpack 打包后的 JS 文件中。[参考网址](https://www.npmjs.com/package/style-loader)<br>
 ```
@@ -618,3 +618,37 @@ git config --global user.email "254784109@qq.com"
  "yoda": [2, "never"]//禁止尤达条件
 ```
 
+// webpack 支持各种模块化，require 是 commonjs
+webpack 中 require 和 export
+
+function world(){ return {} };
+
+node.js的模块系统，就是参照CommonJS规范实现的。在CommonJS中，有一个全局性方法require()，用于加载模块。
+浏览器不兼容CommonJS的根本原因，在于缺少四个Node.js环境的变量。module、exports、require、global
+
+require('./world.js');
+require('style-loader!css-loader!./style.css');
+
+// 摸你 commonjs
+var module = {
+  exports: {}
+};
+
+(function(module, exports) {
+  exports.multiply = function (n) { return n * 1000 };
+}(module, module.exports))
+
+var f = module.exports.multiply;
+f(5) // 5000 
+
+
+package.json 如何正确安装指定的版本  ^与当前版本兼容
+
+
+webpack hello.js hello.bundle.js --moudle-bind 'css=style-loader!css-loader' --progress
+
+官方的增强插件html-webpack-inline-source-plugin，来完成内联自动化生成，非常简单方便
+
+webpack 2.x版本中include值如果是字符串的话用相对路径'./src'会报错，必须用path.resolve(__dirname, 'src')。但我们可以用正则：/\.src\//这样就能提升一半速度了？？？
+
+我本来写的相对路径 './src' 速度447ms，换成path.resolve(__dirname,'src') 速度暴涨到1220ms？？？
