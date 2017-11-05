@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>test</title>
-
+	<meta charset="UTF-8">
+	<title>test</title>
+	<!--
+		   这里可以自定义引入哪些文件，配置 HtmlWebpackPlugin 中的 inject:false
+		   <script src="<%= HtmlWebpackPlugin.files.chunks.index.entry %>"></script>
+		   内联(经过 webpack 编译的)，不需要 publicPath，此方法 compilations.assets[].source() 可以读取文件内容，并且 inject:false
+		   <%= compilations.assets[HtmlWebpackPlugin.files.chunks.main.entry.substr(HtmlWebpackPlugin.files.publicPath.length)].source() %>
+		-->
 </head>
 <body>
 <div id="root"></div>
 
+<!--
+<% for(var k in HtmlWebpackPlugin.files.chunks) { %>
+    <% if(k !== 'main') { %>
+        <script src="<%= HtmlWebpackPlugin.files.chunks[k].entry %>"></script>
+    <% } %>
+<% } %>
+-->
 </body>
 </html>
